@@ -16,7 +16,9 @@ class MyBot(discord.Client):
 
         if result["is_abusive"]:
             await message.delete()
-            await send_as_user(message.channel, message.author, result["sanitized"])
+            score = result["updated_score"]
+            username = f"{message.author.display_name} ({score}점)"
+            await send_as_user(message.channel, message.author, result["sanitized"], override_name=username)
 
 if __name__ == "__main__":
     intents = discord.Intents.default()
