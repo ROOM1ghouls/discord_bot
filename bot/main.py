@@ -1,7 +1,7 @@
 import discord
 from config import settings
 from bot.api import analyze_message
-
+from bot.webhook import send_as_user
 class MyBot(discord.Client):
     async def on_ready(self):
         print(f"[Bot Ready] Logged in as {self.user} (id={self.user.id})")
@@ -13,20 +13,10 @@ class MyBot(discord.Client):
         # 메시지 분석
         result = await analyze_message(message.content)
 
+
         if result["is_abusive"]:
-            try:
-                await message.delete()
-            except discord.Forbidden:
-                print("[Warning] 메시지 삭제 권한이 없습니다.")
-
-            # 검열된 메시지 출력
-            sanitized = result["sanitized"]
-            username = message.author.display_name
-            await message.channel.send(f"{username}: {sanitized}")
-
-        else:
-            # 욕설이 아니라면 아무 반응도 하지 않음
-            pass
+            await message.delete()
+            await send_as_user(message.channel, message.author, result["sanitized"])
 
 if __name__ == "__main__":
     intents = discord.Intents.default()
