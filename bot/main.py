@@ -1,3 +1,4 @@
+import asyncio
 import discord
 from config import settings
 from bot.api import analyze_message
@@ -15,10 +16,14 @@ class MyBot(discord.Client):
 
 
         if result["is_abusive"]:
-            await message.delete()
             score = result["updated_score"]
             username = f"{message.author.display_name} ({score}점)"
-            await send_as_user(message.channel, message.author, result["sanitized"], override_name=username)
+
+            # 삭제와 전송을 동시에 수행
+            await asyncio.gather(
+                message.delete(),
+                send_as_user(message.channel, message.author, result["sanitized"], override_name=username)
+            )
 
 if __name__ == "__main__":
     intents = discord.Intents.default()
