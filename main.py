@@ -1,20 +1,26 @@
 import asyncio
 
 import discord
-from config import settings
+import config
 from bot.api import analyze_message, transform_with_openai
 from bot.webhook import send_as_user
 
+settings = config.settings
+
 MAX_QUEUE        = 1_000     # 버퍼 크기
 MAX_CONCURRENT   = 3         # 동시에 백엔드/OpenAI 몇 개까지?
-DELETE_NOTICE_MS = 3         # ‘검열중…’ 임시 메시지 자동 삭제 시간
+DELETE_NOTICE_MS = 0         # ‘검열중…’ 임시 메시지 자동 삭제 시간
 
 class MyBot(discord.Client):
     def __init__(self, **kw):
         super().__init__(**kw)
         self.msg_q: asyncio.Queue[discord.Message] = asyncio.Queue(MAX_QUEUE)
         self.sem = asyncio.Semaphore(MAX_CONCURRENT)
-        self.worker_task = self.loop.create_task(self._worker())
+        self.worker_task = None  # 아직 워커 태스크는 만들지 않음
+
+    async def setup_hook(self):
+        # 여기가 비동기 초기화 구역입니다!
+        self.worker_task = asyncio.create_task(self._worker())
     async def on_ready(self):
         print(f"[Bot Ready] Logged in as {self.user} (id={self.user.id})")
 
