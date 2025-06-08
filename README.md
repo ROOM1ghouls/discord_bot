@@ -65,9 +65,9 @@
 
 ### UI 상태 흐름 다이어그램
 
-![스크린샷 2025-06-08 오후 7.27.29.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2F9p%2Frt_fkrms4ll5cwmm9cp1r5h40000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_kovsPz%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202025-06-08%20%EC%98%A4%ED%9B%84%207.27.29.png)
+![UI 상태 흐름 다이어그램](images/ui-flow.png)
 
 ### 시스템 다이어그램
 
-![스크린샷 2025-06-08 오후 7.28.35.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2F9p%2Frt_fkrms4ll5cwmm9cp1r5h40000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_X0DETN%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202025-06-08%20%EC%98%A4%ED%9B%84%207.28.35.png)
+![시스템 다이어그램](images/system-diagram.png)
 
