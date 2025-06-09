@@ -9,7 +9,6 @@ settings = config.settings
 
 MAX_QUEUE        = 1_000     # 버퍼 크기
 MAX_CONCURRENT   = 3         # 동시에 백엔드/OpenAI 몇 개까지?
-DELETE_NOTICE_MS = 0         # ‘검열중…’ 임시 메시지 자동 삭제 시간
 
 class MyBot(discord.Client):
     def __init__(self, **kw):
@@ -53,12 +52,11 @@ class MyBot(discord.Client):
             except discord.HTTPException:
                 pass
 
-            temp = await msg.channel.send("⚠️ 악플 검열 중입니다…")
-            sanitized = await transform_with_openai(msg.content)
-            await temp.delete(delay=DELETE_NOTICE_MS)
-
             username = f"{msg.author.display_name} ({res['updated_score']:.3f}점)"
-            await send_as_user(msg.channel, msg.author, sanitized, override_name=username)
+            proxy_msg = await send_as_user(msg.channel, msg.author, "⚠️ 악플 검열 중입니다…", override_name=username)
+            sanitized = await transform_with_openai(msg.content)
+            await proxy_msg.edit(content=sanitized)
+
 
 if __name__ == "__main__":
     intents = discord.Intents.default()
