@@ -45,7 +45,7 @@
 3. .env 파일 생성 및 아래 항목 설정
     ```bash
     DISCORD_TOKEN= <YOUR_DISCORD_BOT_TOKEN>
-    BACKEND_BASE_URL= [아직 배포 되지 않아 백엔드 로컬 실행]
+    BACKEND_BASE_URL= https://agaricleaner.onrender.com
 백엔드 레포지토리 주소: (https://github.com/ROOM1ghouls/AGaRiCleaner)
 4. 실행
     ```bash
@@ -71,3 +71,4 @@
 
 ![시스템 다이어그램](images/system-diagram.png)
 
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
