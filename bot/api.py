@@ -2,6 +2,7 @@
 import aiohttp
 from dotenv import load_dotenv
 import os
+import json
 
 load_dotenv()
 BACKEND_BASE_URL = os.getenv("BACKEND_BASE_URL")
@@ -11,7 +12,7 @@ _session: aiohttp.ClientSession | None = None
 def get_session() -> aiohttp.ClientSession:
     global _session
     if _session is None or _session.closed:
-        _session = aiohttp.ClientSession(json_serialize=lambda x: x)  # 빠른 json
+        _session = aiohttp.ClientSession(json_serialize=json.dumps)  # 빠른 json
     return _session
 
 
@@ -19,7 +20,7 @@ async def analyze_message(content: str, server_id: int, user_id: int) -> dict:
     try:
         async with get_session().post(
                 f"{BACKEND_BASE_URL}/users/{server_id}/{user_id}",
-                params={"message": content}
+                json={"message": content}
         ) as response:
             if response.status == 200:
                 data = await response.json()
