@@ -71,4 +71,8 @@
 
 ![시스템 다이어그램](images/system-diagram.png)
 
+### LICENSE
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+
+### CONTRIBUTE
+기여하고 싶다면 [CONTRIBUTING.md](./CONTRIBUTING.md)를 읽어주세요!
