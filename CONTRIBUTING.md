@@ -94,5 +94,3 @@ python main.py
 ## 🙌 기여자 목록에 이름을 추가하고 싶다면?
 
 Pull Request가 머지되면, **관리자가 `CONTRIBUTORS.md` 및 `README.md`에 기여자 이름을 수동으로 추가**합니다.
-
-고마운 마음을 담아, 모든 기여자는 기록됩니다!
