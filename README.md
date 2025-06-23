@@ -5,7 +5,14 @@
 - `analyze_message`: 메시지의 유해성을 판단  
 - `transform_with_openai`: OpenAI API를 통해 문맥을 유지하면서 부적절한 표현을 순화  
 
-## 준비물
+## 배포된 봇 사용 방법
+    https://discord.com/oauth2/authorize?
+    client_id=1375044160276402207&
+    permissions=536947712&integration_type=0&scope=bot
+- 해당 링크를 통해 디스코드 봇을 서버에 초대 후 사용
+
+
+## 로컬 실행 할 경우
 - Python 3.8 이상  
 - Discord Bot Token  
 - 백엔드 API 서버 (유해성 판별 및 GPT 변환) URL  
