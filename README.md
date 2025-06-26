@@ -83,3 +83,6 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ### CONTRIBUTE
 기여하고 싶다면 [CONTRIBUTING.md](./CONTRIBUTING.md)를 읽어주세요!
+
+## CONTRIBUTOR
+1. beomjunback 백범준 (100%)
